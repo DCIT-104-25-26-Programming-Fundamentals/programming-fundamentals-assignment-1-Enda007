@@ -33,5 +33,22 @@
 
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+import math
+num = input("Enter a random number twin: ")
+while not num.isdigit():
+    print("Please enter a valid number")
+    num = input("Enter a random number twin: ")
 
+
+def prim_check(x):
+    
+    for i in range(2, x):
+        if x % i == 0 and i != 1 and i != x:
+            return "Your number is not a prime number gng💀"
+        else:
+            return "Your number is a prime number ma g👍"
+    if x < 2:
+        return "Your number is too low my guy"
+    else:
+        return "valid"
+print(prim_check(int(num)))	

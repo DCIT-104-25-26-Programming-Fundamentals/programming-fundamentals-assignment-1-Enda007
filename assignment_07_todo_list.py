@@ -77,5 +77,71 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def print_menu() -> None:
+    print("=============================")
+    print("     TO-DO LIST MENU")
+    print("=============================")
+    print("1. Add task")
+    print("2. View tasks")
+    print("3. Delete task")
+    print("4. Quit")
+
+
+def add_task(tasks: list[str]) -> None:
+    task = input("Enter task: ").strip()
+    if task:
+        tasks.append(task)
+        print(f'Task added: "{task}"')
+    else:
+        print("No task entered. Nothing was added.")
+
+
+def view_tasks(tasks: list[str]) -> None:
+    if not tasks:
+        print("Your to-do list is empty.")
+        return
+    print("Your Tasks:")
+    for index, task in enumerate(tasks, start=1):
+        print(f"{index}. {task}")
+
+
+def delete_task(tasks: list[str]) -> None:
+    if not tasks:
+        print("There are no tasks to delete.")
+        return
+    print("Your Tasks:")
+    for index, task in enumerate(tasks, start=1):
+        print(f"{index}. {task}")
+    choice = input("Enter task number to delete: ").strip()
+    if not choice.isdigit():
+        print("Invalid task number.")
+        return
+    task_number = int(choice)
+    if 1 <= task_number <= len(tasks):
+        removed = tasks.pop(task_number - 1)
+        print(f'Task "{removed}" has been removed.')
+    else:
+        print("Invalid task number.")
+
+
+def main() -> None:
+    tasks: list[str] = []
+    while True:
+        print_menu()
+        choice = input("Enter your choice (1-4): ").strip()
+        if choice == "1":
+            add_task(tasks)
+        elif choice == "2":
+            view_tasks(tasks)
+        elif choice == "3":
+            delete_task(tasks)
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number from 1 to 4.")
+
+
+if __name__ == "__main__":
+    main()
 

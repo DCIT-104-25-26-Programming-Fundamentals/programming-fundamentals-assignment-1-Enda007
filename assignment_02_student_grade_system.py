@@ -43,5 +43,23 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+grade=(input("What was your grade? "))
+while grade.isdigit()==False:
+	print("It seems you do understand the instructions. Enter your Grade in Digits")
+	grade=(input("What was your grade? "))
+def grade_assessment(x):	
+	if int(x) in range(80,101):
+		return "You had Grade A,you're a brilla "
+	elif int(x) in range(70,80):
+		return "You had Grade B,you're not mid"
+	elif int(x)  in range(60,70):
+		return "You had Grade C , you're an average student"
+	elif int(x) in range(50,60):
+		return "You had a Grade D, looks like its time to hit the books bro "
+	elif int(x) < 50:
+		return "I'm sorry to be the bearer of bad news but um...you failed💀.You had a Grade F"
+	else:
+		return "Your number isn't in the range"
+print(grade_assessment(grade))
+
 

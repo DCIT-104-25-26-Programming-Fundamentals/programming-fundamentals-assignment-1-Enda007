@@ -88,5 +88,91 @@
 
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+#Define a function to add a student to the list
+def add_student(students: list[dict]) -> None:
+    name = input("Student name: ")
+    student_id = input("Student ID: ")
+    while True:
+        try:
+            score_count = int(input("How many scores? "))
+            if score_count < 0:
+                print("Please enter a non-negative number.")
+                continue
+            break
+        except ValueError:
+            print("Invalid number. Please enter an integer.")
+    scores = []
+    for i in range(score_count):
+        while True:
+            try:
+                score = float(input(f"Enter score {i + 1}: "))
+                scores.append(score)
+                break
+            except ValueError:
+                print("Invalid score. Please enter a number.")
+    students.append({
+        "name": name,
+        "id": student_id,
+        "scores": scores,
+    })
+    print(f"Student \"{name}\" added successfully.")
 
+#Define a function to display all students and their scores
+def display_students(students: list[dict]) -> None:
+    if not students:
+        print("No students have been added yet.")
+        return
+    print("--------------------------------------------------")
+    print("Name           ID          Scores         Average")
+    print("--------------------------------------------------")
+    for student in students:
+        scores_str = ", ".join(str(int(score)) if score.is_integer() else str(score) for score in student["scores"])
+        average = 0.0
+        if student["scores"]:
+            average = sum(student["scores"]) / len(student["scores"])
+        print(f"{student['name']}   {student['id']}    {scores_str}     {average:.2f}")
+    print("--------------------------------------------------")
+
+#Define a function to calculate the average score for a specific student
+def calculate_average_score(students: list[dict]) -> None:
+    student_id = input("Enter student ID: ")
+    for student in students:
+        if student["id"] == student_id:
+            if not student["scores"]:
+                print(f"{student['name']} has no scores.")
+                return
+            average = sum(student["scores"]) / len(student["scores"])
+            print(f"{student['name']}'s average score: {average:.2f}")
+            return
+    print("Student ID not found.")
+
+#Define a function to show the menu options
+def show_menu() -> None:
+    print("===============================")
+    print("   STUDENT RECORD SYSTEM MENU")
+    print("===============================")
+    print("1. Add student")
+    print("2. Display all students")
+    print("3. Calculate average score")
+    print("4. Quit")
+
+#Define the main function to run the student record system
+def main() -> None:
+    students: list[dict] = []
+    while True:
+        show_menu()
+        choice = input("Enter your choice (1-4): ")
+        if choice == "1":
+            add_student(students)
+        elif choice == "2":
+            display_students(students)
+        elif choice == "3":
+            calculate_average_score(students)
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
+
+
+if __name__ == "__main__":
+    main()

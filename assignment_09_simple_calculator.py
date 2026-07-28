@@ -66,5 +66,68 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
-
+import math
+print("SIMPLE CALCULATOR")
+ops = (
+    "1. Addition",
+    "2. Subtraction",
+    "3. Multiplication",
+    "4. Division",
+    "5. Modulus",
+    "6. Exponentiation",
+    "7.Quit"
+)
+for op in ops:
+    print(op)
+sel_op=int(input("Select an operation (1-7): "))
+if sel_op==1:
+    num=int(input("How many numbers do you want to add? "))
+    numbers = []
+    for _ in range(num):
+        n = int(input("Enter a number: "))
+        numbers.append(n)
+    print(f"The sum of {numbers} is {sum(numbers)}")
+elif sel_op==2:
+    num=int(input("How many numbers do you want to subtract? "))
+    numbers = []
+    for _ in range(num):
+        n = int(input("Enter a number: "))
+        numbers.append(n)
+    print(f"The difference of {numbers} is {numbers[0] - sum(numbers[1:])}")
+elif sel_op==3:
+    num=int(input("How many numbers do you want to multiply? "))
+    numbers = []
+    for _ in range(num):
+        n = int(input("Enter a number: "))
+        numbers.append(n)
+    product = 1
+    for n in numbers:
+        product *= n
+    print(f"The product of {numbers} is {product}")
+elif sel_op==4:
+    num=int(input("How many numbers do you want to divide? "))
+    numbers = []
+    for _ in range(num):
+        n = int(input("Enter a number: "))
+        numbers.append(n)
+    result = numbers[0]
+    for n in numbers[1:]:
+        result /= n
+    print(f"The quotient of {numbers} is {result:2f}")     
+elif sel_op==5:
+    num=int(input("How many numbers do you want to find the modulus of? "))
+    numbers = []
+    for _ in range(num):
+        n = int(input("Enter a number: "))
+        numbers.append(n)
+    result = numbers[0]
+    for n in numbers[1:]:
+        result %= n
+    print(f"The modulus of {numbers} is {result}")
+elif sel_op==6:
+    base = int(input("Whats the base number? "))
+    exp = int(input("And to what exponent? "))
+    result = base ** exp
+    print(f"{base} raised to {exp} is {result}")
+elif sel_op==7:
+    print("Goodbye!")

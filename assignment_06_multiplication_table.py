@@ -53,5 +53,51 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+#Defining a function to validate if the input is a positive integer
+def validate_positive_integer(value):
+    try:
+        number = int(value)
+    except ValueError:
+        return None
+
+    if number > 0:
+        return number
+    return None
+
+# Defining a function to print the multiplication table for a single number
+def print_single_table(number):
+    print(f"Multiplication Table for {number}:")
+    for i in range(1, 13):
+        print(f"{number}  x  {i:>2}  =  {number * i:>2}")
+
+# Defining a function to print multiplication tables for numbers from 1 to n
+def print_full_tables(n):
+    for number in range(1, n + 1):
+        print(f"Multiplication Table for {number}:")
+        for i in range(1, 13):
+            print(f"{number}  x  {i:>2}  =  {number * i:>2}")
+        if number != n:
+            print("-" * 27)
+
+#Defining the main function to handle user input and call the appropriate functions
+def main():
+    part_a_input = input("Enter a number for Part A: ")
+    part_a = validate_positive_integer(part_a_input)
+    if part_a is None:
+        print("Error: Please enter a positive integer.")
+        return
+
+    print_single_table(part_a)
+
+    part_b_input = input("Enter a number N for Part B: ")
+    part_b = validate_positive_integer(part_b_input)
+    if part_b is None:
+        print("Error: Please enter a positive integer.")
+        return
+
+    print_full_tables(part_b)
+
+
+if __name__ == "__main__":
+    main()
 

@@ -47,5 +47,26 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+#import math
+fib=[0,1]
+n=int(input("How many terms should I display? "))
+while n<=0:
+    print("Please enter a valid number")
+    n=int(input("How many terms should I display? "))
+def sequence(a,b):
+    fib.append(a+b)
+    return fib
+fib=[0,1]
+for i in range(n-2):
+    sequence(fib[-1],fib[-2])
+print(f"The first {n} terms of the Fibonacci sequence are: {fib}")
+dig=int(input("Enter a number you want to check🔍: "))
+def fib_check(x):
+    for i in range(x-2):
+        sequence(fib[-1],fib[-2])
+    return x in fib
+if fib_check(dig)==True:
+    print(f"{dig} is a Fibonacci number👍")
+else:
+    print(f"{dig} is not a Fibonacci number💀")
 
